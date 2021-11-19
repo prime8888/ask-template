@@ -5,24 +5,24 @@ const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const db = {};
 
-let sequelize = new Sequelize(process.env.BDD_URL)
+const sequelize = new Sequelize(process.env.BDD_URL);
 
 fs.readdirSync(__dirname)
-  .filter((file) => {
-    return (
-      file.indexOf('.') !== 0 &&
+    .filter((file) => {
+      return (
+        file.indexOf('.') !== 0 &&
       file !== basename &&
       file.slice(-3) === '.js' &&
       file != 'config.js'
-    );
-  })
-  .forEach((file) => {
-    const model = require(path.join(__dirname, file))(
-      sequelize,
-      Sequelize.DataTypes
-    );
-    db[model.name] = model;
-  });
+      );
+    })
+    .forEach((file) => {
+      const model = require(path.join(__dirname, file))(
+          sequelize,
+          Sequelize.DataTypes,
+      );
+      db[model.name] = model;
+    });
 
 Object.keys(db).forEach((modelName) => {
   if (db[modelName].associate) {

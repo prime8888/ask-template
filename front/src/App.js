@@ -5,8 +5,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
-} from "react-router-dom";
+  Redirect,
+} from 'react-router-dom';
 
 // Components
 import TopBar from './components/TopBar';
@@ -21,22 +21,21 @@ function App() {
     <Router>
       <TopBar />
 
-        <Switch>
-          <Route path="/answer/:id">
-            <Answer />
-          </Route>
+      <Switch>
+        <Route path="/answer/:id">
+          <Answer />
+        </Route>
 
-          <Route path="/ask">
-            <Question />
-          </Route>
-          
-          <Route exact path="/">
-            <ListQuestions />
-          </Route>
+        <Route path="/ask">
+          <Question />
+        </Route>
 
-          <Redirect to="/" />
-          
-        </Switch>
+        <Route exact path="/">
+          <ListQuestions />
+        </Route>
+
+        <Redirect to="/" />
+      </Switch>
     </Router>
   );
 }

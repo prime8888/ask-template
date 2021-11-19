@@ -1,10 +1,9 @@
-
 import React from 'react';
 
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 
-import { useHistory } from 'react-router';
+import {useHistory} from 'react-router';
 
 export default function TopBar() {
   const history = useHistory();
@@ -29,5 +28,5 @@ export default function TopBar() {
         </Nav>
       </Navbar.Collapse>
     </Navbar>
-  )
+  );
 }
