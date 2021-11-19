@@ -11,8 +11,8 @@ on:
 
 jobs:
   build:
-
-    run:
+    defaults:
+      run:
         working-directory: ./front
 
 
