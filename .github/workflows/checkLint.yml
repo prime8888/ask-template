@@ -27,18 +27,3 @@ jobs:
     - run: npm run lint
     - run: npm run check-pretty
   
-  front:
-    defaults:
-      run:
-        working-directory: ./front
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Setup NodeJS
-      uses: actions/setup-node@v2
-      with:
-        node-version: 14
-    - run: npm install --only=dev
-    - run: npm run check-pretty
