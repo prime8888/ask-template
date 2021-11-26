@@ -27,7 +27,7 @@ jobs:
         node-version: 16
     - run: npm install
     - run: npm run build --if-present
-    name: Create SSH
+    - name: Create SSH
       run: mkdir ~/.ssh
     - name: Install SSH Key
       run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
