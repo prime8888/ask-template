@@ -27,6 +27,16 @@ jobs:
         node-version: 16
     - run: npm install
     - run: npm run build --if-present
+    name: Create SSH
+      run: mkdir ~/.ssh
+    - name: Install SSH Key
+      run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+    - name: Setup Perm
+      run: chmod 600 ~/.ssh/id_rsa
+    - name: Adding Known Hosts
+      run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+    - name: Deploy with rsync
+      run: rsync -avz -e 'ssh -i ~/.ssh/id_rsa' ./build/ ls1@${{ secrets.SSH_HOST }}:/home/github/build/
 
     # serve:
 
