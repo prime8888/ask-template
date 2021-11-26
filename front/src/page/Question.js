@@ -14,6 +14,7 @@ export default function Question() {
   const [author, setAuthor] = useState('');
   const [type, setType] = useState('question');
   const [question, setQuestion] = useState('');
+  const [file, setFile] = useState(null);
 
   const {mutate: addQuestion} = useMutation(api.questions.addQuestion, {
     onSuccess: (data) => {
@@ -27,6 +28,7 @@ export default function Question() {
         author: !!author ? author : undefined,
         type,
         question,
+        file
       });
     }
   }
@@ -63,6 +65,16 @@ export default function Question() {
           onChange={(e) => setQuestion(e.target.value)}
           isInvalid={question === ''}
           rows={5}
+        />
+      </Form.Group>
+
+      <Form.Group>
+        <Form.Label>Ajouter une image</Form.Label>
+        <br />
+        <Form.Control
+          type="file"
+          accept=".jpg,.png"
+          onChange={(e) => setFile(e.target.files)}
         />
       </Form.Group>
 

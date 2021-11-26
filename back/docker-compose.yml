@@ -25,3 +25,5 @@ services:
 
   fakes3:
     image: fingershock/fakes3
+    ports:
+      - 8000:8000
