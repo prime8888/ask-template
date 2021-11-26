@@ -5,6 +5,8 @@ module.exports = (sequelize, DataTypes) => {
         question: DataTypes.STRING,
         type: DataTypes.STRING,
         author: DataTypes.STRING,
+        image: DataTypes.STRING,
+        imageMime: DataTypes.STRING,
       },
       {},
   );

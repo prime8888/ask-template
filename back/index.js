@@ -6,17 +6,21 @@ const cors = require('cors');
 const bdd = require('./models');
 const app = express();
 
+const upload = require('multer')();
+
 const questionType = ['question', 'action'];
 
 app.use(cors());
 app.use(express.json());
 
-app.post('/questions', (req, res) => {
+app.post('/questions', upload.single('file'), (req, res) => {
   if (
     !!req.body.question &&
     !!req.body.type &&
     questionType.includes(req.body.type)
   ) {
+    console.log(req.file);
+
     bdd.Question.create({
       question: req.body.question,
       type: req.body.type,
